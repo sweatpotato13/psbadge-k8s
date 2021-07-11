@@ -1,0 +1,6 @@
+[submodule "services/github-profile-psbadge"]
+	path = services/github-profile-psbadge
+	url = https://github.com/sweatpotato13/github-profile-psbadge
+[submodule "services/AtCoderUserInfoAPI"]
+	path = services/AtCoderUserInfoAPI
+	url = https://github.com/sweatpotato13/AtCoderUserInfoAPI

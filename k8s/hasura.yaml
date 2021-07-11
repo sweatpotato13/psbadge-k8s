@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hasura
+    hasuraService: custom
+  name: hasura
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hasura
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hasura
+    spec:
+      containers:
+      - image: hasura/graphql-engine:v2.0.0-alpha.5
+        imagePullPolicy: IfNotPresent
+        name: hasura
+        envFrom:
+          - configMapRef:
+              name: hasura-configmap
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+            requests:
+                cpu: "0.2"
+                memory: 300Mi
+            limits:
+                cpu: "1"
+                memory: 1000Mi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: hasura
+  name: hasura
+  namespace: default
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  selector:
+    app: hasura

@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: atcoder-configmap
+    namespace: default
+data:
+    # BASE
+    NODE_ENV: 
+    APP_NAME: 
+    APP_TITLE: 
+    APP_DESCRIPTION: 
+    HOST: 
+    PORT:
+    RATE_LIMIT_MAX: 
+
+    # POSTGRES
+    POSTGRES_HOST:
+    POSTGRES_PASSWORD:
+    POSTGRES_DB:
+    POSTGRES_PORT:
+    POSTGRES_USER:
+    POSTGRES_SYNC:
+
+    # LOGGER
+    REMOTE_LOGGING_ENABLED: 
+    MONGODB_USER: 
+    MONGODB_PW: 
+    MONGODB_HOST: 
+    MONGODB_PORT: 
+    MONGODB_DB: 
+    MONGODB_INFO_COLLECTION: 
+    MONGODB_ERROR_COLLECTION: 

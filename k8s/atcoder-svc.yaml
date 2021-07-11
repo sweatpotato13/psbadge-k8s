@@ -1,0 +1,57 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: atcoder
+    namespace: default
+    labels:
+        app: atcoder
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: atcoder
+    strategy:
+        type: RollingUpdate
+        rollingUpdate:
+            maxSurge: 50%
+            maxUnavailable: 25%
+    template:
+        metadata:
+            #This annotation is required for linkerd to know the cpu request.
+            annotations:
+                config.linkerd.io/proxy-cpu-request: "0.2"
+            labels:
+                app: atcoder
+        spec:
+            containers:
+                - name: atcoder
+                  image: sweatpotato/atcoder-api:master
+                  resources:
+                      requests:
+                          cpu: "0.2"
+                          memory: 300Mi
+                      limits:
+                          cpu: "1"
+                          memory: 1000Mi
+                  envFrom:
+                      - configMapRef:
+                            name: atcoder-configmap
+            imagePullSecrets:
+                - name: docker-secret
+---
+kind: Service
+apiVersion: v1
+metadata:
+    name: atcoder-svc
+    namespace: default
+    labels:
+        app: atcoder
+spec:
+    selector:
+        app: atcoder
+    ports:
+        - name: http
+          protocol: TCP
+          port: 8000
+          targetPort: 8000

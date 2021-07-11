@@ -1,0 +1,13 @@
+apiVersion: skaffold/v2beta16
+kind: Config
+metadata:
+  name: k-s
+deploy:
+  kubectl:
+    manifests:
+    - k8s/configmap/*
+    - k8s/autoscale/*
+    - k8s/ingress.yaml
+    - k8s/hasura.yaml
+    - k8s/psbadge-svc.yaml
+    - k8s/atcoder-svc.yaml

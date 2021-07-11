@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+     name: psbadge-configmap
+     namespace: default
+data:
+     # BASE
+     NODE_ENV: 
+     APP_NAME: 
+     APP_TITLE: 
+     APP_DESCRIPTION: 
+     HOST: 
+     PORT: 
+     RATE_LIMIT_MAX: 
+
+     CODEFORCE_ENDPOINT: 
+     ATCODER_ENDPOINT: 
+     TOPCODER_ENDPOINT:
+
+     #LOGGER
+     REMOTE_LOGGING_ENABLED: 
+     MONGODB_USER: 
+     MONGODB_PW: 
+     MONGODB_HOST: 
+     MONGODB_PORT: 
+     MONGODB_DB: 
+     MONGODB_INFO_COLLECTION: 
+     MONGODB_ERROR_COLLECTION: 
