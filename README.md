@@ -99,3 +99,19 @@ rename configmap.example to configmap and fill out .yaml files
 ### 2. Run skaffold
 
 in terminal run command `skaffold run`
+
+## Known Issue
+
+### If Ingress doesnt work
+
+**Docker Desktop**
+
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.48.1/deploy/static/provider/cloud/deploy.yaml`
+
+**Minikube**
+
+`minikube addons enable ingress`
+
+**Microk8s**
+
+`microk8s enable ingress`
